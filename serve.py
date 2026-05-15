@@ -25,6 +25,9 @@ async def handler(websocket):
             if data['type'] == 'fax':
                 metadata = data
                 print(f"Incoming fax: {metadata['filename']}")
+            if data['type'] == 'call':
+                metadata = data
+                print(f"Incoming call: {metadata['filename']}")
         elif isinstance(message, bytes):
             if metadata is None: 
                 print("Error: received binary without metadata")
