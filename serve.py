@@ -171,6 +171,16 @@ async def _handle_recalculate_time(websocket, message):
     except asyncio.TimeoutError:
         # The GUI owns the user-facing phase timeouts and reports the relevant phase.
         return
+    except Exception as error:
+        LOGGER.exception("Failed to recalculate fax time.")
+        await _send_json(
+            websocket,
+            {
+                "type": "error",
+                "requestId": request_id,
+                "error": str(error),
+            },
+        )
     finally:
         shutil.rmtree(request_dir, ignore_errors=True)
 
