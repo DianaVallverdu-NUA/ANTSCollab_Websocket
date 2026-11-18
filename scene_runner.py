@@ -119,7 +119,7 @@ class FaxController:
             raise RuntimeError(f"Asterisk could not complete the fax call: {response}")
 
     @staticmethod
-    async     def _finish_command(process, command_result):
+    async def _finish_command(process, command_result):
         if process.returncode is None:
             try:
                 process.terminate()
@@ -130,7 +130,7 @@ class FaxController:
                 await asyncio.wait_for(asyncio.shield(command_result), timeout=2)
             except asyncio.TimeoutError:
                 process.kill()
-                await command_result
+                await asyncio.wait_for(command_result, timeout=1)
 
 
 class SceneRunner:
