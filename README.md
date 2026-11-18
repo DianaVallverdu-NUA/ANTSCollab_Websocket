@@ -58,6 +58,7 @@ endpoint. It sends `call_sent` when the endpoint becomes busy, followed by
 
 ## Raspberry Pi requirements
 
+- Disable power saving by following [these instructions](https://thedigitalpictureframe.com/stay-connected-enhancing-raspberry-pi-wi-fi-stability-by-turning-off-power-management/)
 - The Asterisk CLI must be available, with `SendFax` installed and a fax
   endpoint named `1000`. Override the endpoint ID with
   `ASTERISK_FAX_ENDPOINT_ID`; override the channel with `ASTERISK_FAX_CHANNEL`.
