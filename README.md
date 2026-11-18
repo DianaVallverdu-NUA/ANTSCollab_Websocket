@@ -1,10 +1,17 @@
 # ANTS Collaboration WebSocket server
 
+On first run, create venv:
+
+```sh
+python -m venv .venv --system-site-packages
+```
+After that:
 The server accepts scene playback and fax-time recalculation requests from the
 Electron GUI. Run it on the Raspberry Pi with the WebSocket server listening on
 port `8765`:
 
 ```sh
+source .venv/bin/activate
 python -m pip install -e .
 python serve.py
 ```
